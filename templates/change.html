@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change your favorite
+{% endblock %}
+
+
+{% block main %}
+
+    <form action = "/change" method = "post">
+        <p class="text-primary">Here is the songs of {{artist}} in Spotify:</p>
+        <input name="artist"  type="hidden" value="{{artist}}">
+        <div class="list-group">
+            {% for track in tracks %}
+            <div>
+            <input type="radio" name ="song" value = "{{track}}">
+            <label for="song">{{track}}</label>
+            </div>
+            {% endfor %}
+        </div>
+        <p></p>
+        <button class="btn btn-primary" type="submit">Change</button>
+    </form>
+
+
+
+{% endblock %}

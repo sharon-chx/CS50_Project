@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+
+{% block main %}
+
+<table class="table table-striped">
+
+        <thead>
+            <tr>
+              <th scope="col">Artist</th>
+              <th scope="col">Song Name</th>
+              <th scope="col">Time Voted</th>
+              <th scope="col"></th>
+      </thead>
+      <tbody>
+              {% if rows|length == 0 %}
+              <tr>
+                  <td>You haven't voted any songs yet!</td>
+              </tr>
+
+              {% else %}
+                  {% for row in rows %}
+                    <tr>
+                      <td>{{row["artist"]}}</td>
+                      <td>{{row["song_name"]}}</td>
+                      <td>{{row["timestamp"]}}</td>
+                      <td>
+                            <form action = "/search" method = "post">
+                                <button class="btn btn-primary" type="submit" name= "artist" value = "{{row["artist"]}}">Change</button>
+                            </form>
+                      </td>
+                    </tr>
+
+                {% endfor %}
+              {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

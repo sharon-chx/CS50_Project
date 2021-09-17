@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My choices
+{% endblock %}
+
+
+{% block main %}
+    <h2> <span class="badge badge-success" >Below is your most favorite song of artists you have voted for: </span> </h2>
+    <ul class="list-unstyled">
+        {% if choices|length != 0 %}
+            {% for key, value in choices.items() %}
+
+                <div class="media-body">
+                  <h5 class="mt-0 mb-1"> {{key}} : {{value}} </h5>
+
+                </div>
+
+
+          {% endfor %}
+      {% endif %}
+
+    </ul>
+
+
+{% endblock %}

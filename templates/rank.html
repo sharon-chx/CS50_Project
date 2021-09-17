@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ranking
+{% endblock %}
+
+
+{% block main %}
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+              <th scope="col">Artist</th>
+              <th scope="col">Song Name</th>
+              <th scope="col">Total Votes</th>
+              <th scope="col">Listen</th>
+      </thead>
+      <tbody>
+              {% if rows|length == 0 %}
+              <tr>
+                  <td>You haven't voted for any artist yet!</td>
+              </tr>
+
+              {% else %}
+                  {% for row in rows %}
+                    <tr>
+                      <td>{{row["artist"]}}</td>
+                      <td>{{row["song_name"]}}</td>
+                      <td>{{row["max(vote)"]}}</td>
+                      <td>
+                            <a href="https://www.youtube.com/results?search_query={{row["artist"]}} {{row["song_name"]}}">
+                                  <button type="button" class="btn btn-danger">Youtbue</button>
+                             </a>
+
+                             <a href="https://open.spotify.com/search/{{row["artist"]}} {{row["song_name"]}}">
+                                  <button type="button" class="btn btn-success">Spotify</button>
+                             </a>
+                      </td>
+                    </tr>
+
+                {% endfor %}
+              {% endif %}
+    </tbody>
+</table>
+
+
+{% endblock %}
