@@ -1,1 +1,1 @@
-#HTML templates for the website
+HTML templates for the website
